@@ -5,8 +5,6 @@ import Camera from './Camera'
 import Renderer from './Renderer'
 import PointerEvents from './Utils/PointerEvents'
 import World from './World/World.js'
-import visibleHeightAtZDepth from './Utils/visibleHeightAtZDepth'
-import visibleWidthAtZDepth from './Utils/visibleWidthAtZDepth'
 import Resources from './Utils/Resources'
 import sources from './World/sources.js'
 import Debug from './Utils/Debug'
@@ -46,11 +44,6 @@ export default class Experience {
         this.renderer = new Renderer()
         this.resources = new Resources(sources)
 
-        // Base and scaleRatio
-        this.baseWidth = 20
-        this.scaleRatioCamera = new Camera()
-        this.resize()
-
         this.world = new World()
 
         //Sizes resize events
@@ -67,29 +60,15 @@ export default class Experience {
 
 
     resize() {
-        this.scaleRatioCamera.resize()
         this.camera.resize()
-        //Update scaleRatio
-        if (this.sizes.width >= this.sizes.height * 1.5) {
-            this.scaleRatio = (visibleWidthAtZDepth(0.2, this.scaleRatioCamera.instance ) /( this.baseWidth * 1.5)) * 1.05
-            this.windowHorizontal = true
-        } else {
-            this.scaleRatio = (visibleHeightAtZDepth(0.2, this.scaleRatioCamera.instance) / this.baseWidth) * 1.05
-            this.windowHorizontal = false
-        }
-
         this.renderer.resize()
-        if (this.world) this.world.resize()
     }
 
     update() {
         if (this.statsActive) this.stats.begin()
 
         this.camera.update()
-        if (this.loadingPage) this.loadingPage.update()
-        if (this.postProcessing)
-            this.postProcessing.update()
-        else this.renderer.update()
+        this.renderer.update()
 
         if (this.statsActive) this.stats.end()
     }

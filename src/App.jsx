@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Experience from './Experience/Experience'
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import LoadingAnim from "./LoadingAnim/LoadingAnim";
 
@@ -18,7 +17,6 @@ export default function App() {
             {
                 setLoaded(true)  
             }, 500)
-            console.log(loaded)
         })
     }, [resources])
 

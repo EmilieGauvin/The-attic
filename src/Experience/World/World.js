@@ -1,12 +1,9 @@
-import * as THREE from 'https://unpkg.com/three@0.145.0/build/three.module'
 import Experience from "../Experience";
-import Attic from './AboutPage/Attic'
+import Attic from './Attic'
 import Background from './Background';
 
-export default class World
-{
-    constructor()
-    {
+export default class World {
+    constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.camera = this.experience.camera.instance
@@ -14,14 +11,12 @@ export default class World
         this.renderer = this.experience.renderer
         this.resources = this.experience.resources
 
-        this.resources.on('ready', () =>
-        {
+        this.resources.on('ready', () => {
             this.attic = new Attic()
-            this.background= new Background()
-            // this.renderer.setPostProcessing()
+            this.background = new Background()
         })
     }
-}       
+}
 
 
 
