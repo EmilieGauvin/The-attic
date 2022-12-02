@@ -1,0 +1,63 @@
+#app {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  /* z-index: 1; */
+  /* border: solid; */
+
+}
+
+.link{
+  position: absolute;
+  bottom:20px;
+  left:20px
+}
+
+
+
+
+/* *, CUBE*/ 
+/* ::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+.background.notLoaded{
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  /* z-index:2; */
+  /* opacity: 1; */
+  transition:  background-color 2s;
+}
+
+.background.loaded{
+  /* height: 100vh; */
+  background-color: transparent;
+   /* z-index:0; */
+  transition:  background-color 2s;
+}
+
+
+.loadingAnim.notLoaded {
+  opacity : 1 ;
+  transition: opacity 0.5s
+}
+
+.loadingAnim.loaded {
+  opacity : 0 ;
+  pointer-events:none;
+  transition: opacity 0.5s
+}
+
+.notLoaded .link {
+  opacity : 0 ;
+  transition:  background-color 2s;
+}
+
+.loaded .link {
+  opacity : 1 ;
+  transition:  background-color 2s;
+}
