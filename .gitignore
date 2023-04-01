@@ -25,3 +25,5 @@ public
 *.sw?
 
 .vercel
+vite.config.json
+vercel.json
